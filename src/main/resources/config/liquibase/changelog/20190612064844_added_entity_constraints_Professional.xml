@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    
+    <changeSet id="20190612064844-2" author="jhipster">
+    <!--
+        Added the constraints for entity Employee.
+    -->
+        
+        <addForeignKeyConstraint baseColumnNames="emp_type_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_emp_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="emp_type"/>
+
+		<addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="status"/>
+	<!--
+        Added the constraints for entity Professional.
+    -->	
+		<addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+                                 
+                                 
+                                 
+		<addForeignKeyConstraint baseColumnNames="location_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="location"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="job_title_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_job_title_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job_title"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="client_domain_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_client_domain_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client_domain"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="mode_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_mode_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="mode"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="employer_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_employer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employer"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="prime_vendor_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_prime_vendor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prime_vendor"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="end_client_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_end_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="end_client"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="work_authorization_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_work_authorization_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="work_authorization"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="pay_type_id"
+                                 baseTableName="professional"
+                                 constraintName="fk_professional_pay_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pay_type"/>
+                                 
+    </changeSet>
+</databaseChangeLog>

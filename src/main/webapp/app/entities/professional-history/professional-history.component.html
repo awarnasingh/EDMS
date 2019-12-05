@@ -1,0 +1,118 @@
+<div class="profHistory">
+    <div class="heading">
+        <h2>Professional History</h2>
+    </div>
+    <div class="profTable">
+        <jhi-alert></jhi-alert>
+        <br/>
+        <div class="table-responsive" *ngIf="!errorMessage">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Professional&nbsp;Id</span></th>
+                    <th><span>Employee&nbsp;Type</span></th>
+                    <th><span>SRS&nbsp;EmpId</span></th>
+                    <th><span>Full&nbsp;Name</span></th>
+                    <th><span>First&nbsp;Name</span></th>
+                    <th><span>Last&nbsp;Name</span></th>
+                    <th><span>Education</span></th>
+                    <th><span>Certification</span></th>
+                    <th><span>Email</span></th>
+                    <th><span>Home&nbsp;Phone</span></th>
+                    <th><span>Mobile&nbsp;Number</span></th>
+                    <th><span>Work&nbsp;PhoneNumber</span></th>
+                    <th><span>DOB</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>City</span></th>
+                    <th><span>Location</span></th>
+                    <th><span>Total&nbsp;Experience</span></th>
+                    <th><span>Job&nbsp;Title</span></th>
+                    <th><span>Type&nbsp;Of&nbsp;Role</span></th>
+                    <th><span>Skill&nbsp;Category</span></th>
+                    <th><span>Specific&nbsp;Skills</span></th>
+                    <th><span>General&nbsp;Skills</span></th>
+                    <th><span>Client&nbsp;Domain</span></th>
+                    <th><span>Mode</span></th>
+                    <th><span>Employer</span></th>
+                    <th><span>Prime&nbsp;Vendor</span></th>
+                    <th><span>End&nbsp;Client</span></th>
+                    <th><span>Current&nbsp;Project&nbsp;StartDate</span></th>
+                    <th><span>Current&nbsp;Project&nbsp;EndDate</span></th>
+                    <th><span>Remarks</span></th>
+                    <th><span>Sell&nbsp;Rate</span></th>
+                    <th><span>Work&nbsp;Authorization</span></th>
+                    <th><span>Added&nbsp;On</span></th>
+                    <th><span>Bench&nbsp;Age</span></th>
+                    <th><span>Technology</span></th>
+                    <th><span>Pay&nbsp;Type</span></th>
+                    <th><span>Additional&nbsp;Notifiers</span></th>
+                    <th><span>Source</span></th>
+                    <th><span>Work&nbsp;Experience</span></th>
+                    <th><span>Primary&nbsp;Skills</span></th>
+                    <th><span>Sell&nbsp;Rate&nbsp;Helper</span></th>
+                    <th><span>Created&nbsp;By</span></th>
+                    <th><span>Created&nbsp;Date</span></th>
+                    <th><span>Updated&nbsp;By</span></th>
+                    <th><span>Updated&nbsp;Date</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let professionalHistory of professionalHistories ;trackBy: trackId">
+                    <td><a
+                            [routerLink]="['/professional-history', professionalHistory.id, 'view' ]">{{professionalHistory.id}}</a>
+                    </td>
+                    <td>{{professionalHistory.professionalId !== null ? professionalHistory.professionalId : '-'}}</td>
+                    <td>{{professionalHistory.empType !== null ? professionalHistory.empType : '-'}}</td>
+                    <td>{{professionalHistory.srsEmpId != null ? professionalHistory.srsEmpId : '-'}}</td>
+                    <td>{{professionalHistory.fullName != null ? professionalHistory.fullName : '-'}}</td>
+                    <td>{{professionalHistory.firstName != null ? professionalHistory.firstName : '-'}}</td>
+                    <td>{{professionalHistory.lastName != null ? professionalHistory.lastName : '-'}}</td>
+                    <td>{{professionalHistory.education != null ? professionalHistory.education : '-'}}</td>
+                    <td>{{professionalHistory.certification != null ? professionalHistory.certification : '-'}}</td>
+                    <td>{{professionalHistory.email != null ? professionalHistory.email != null : '-'}}</td>
+                    <td>{{professionalHistory.homePhone != null ? professionalHistory.homePhone : '-'}}</td>
+                    <td>{{professionalHistory.mobileNumber != null ? professionalHistory.mobileNumber : '-'}}</td>
+                    <td>{{professionalHistory.workPhoneNumber != null ? professionalHistory.workPhoneNumber : '-'}}</td>
+                    <td>{{professionalHistory.dOB != null ? professionalHistory.dOB : '-'}}</td>
+                    <td>{{professionalHistory.status != null ? professionalHistory.status : '-'}}</td>
+                    <td>{{professionalHistory.city != null ? professionalHistory.city : '-'}}</td>
+                    <td>{{professionalHistory.location != null ? professionalHistory.location : '-'}}</td>
+                    <td>{{professionalHistory.totalExperience != null ? professionalHistory.totalExperience : '-'}}</td>
+                    <td>{{professionalHistory.jobTitle != null ? professionalHistory.jobTitle : '-'}}</td>
+                    <td>{{professionalHistory.typeOfRole != null ? professionalHistory.typeOfRole : '-'}}</td>
+                    <td>{{professionalHistory.skillCategory != null ? professionalHistory.skillCategory : '-'}}</td>
+                    <td>{{professionalHistory.specificSkills != null ? professionalHistory.specificSkills : '-'}}</td>
+                    <td>{{professionalHistory.generalSkills != null ? professionalHistory.generalSkills : '-'}}</td>
+                    <td>{{professionalHistory.clientDomain != null ? professionalHistory.clientDomain : '-'}}</td>
+                    <td>{{professionalHistory.mode != null ? professionalHistory.mode : '-'}}</td>
+                    <td>{{professionalHistory.employer != null ? professionalHistory.employer : '-'}}</td>
+                    <td>{{professionalHistory.primeVendor !== null ? professionalHistory.primeVendor : '-'}}</td>
+                    <td>{{professionalHistory.endClient !== null ? professionalHistory.endClient : '-'}}</td>
+                    <td>{{professionalHistory.currentProjectStartDate != null ? (professionalHistory.currentProjectStartDate | date:'mediumDate') : '-'}}</td>
+                    <td>{{professionalHistory.currentProjectEndDate != null ? (professionalHistory.currentProjectEndDate | date:'mediumDate') : '-'}}</td>
+                    <td>{{professionalHistory.remarks !== null ? professionalHistory.remarks : '-'}}</td>
+                    <td>{{professionalHistory.sellRate !== null ? professionalHistory.sellRate : '-'}}</td>
+                    <td>{{professionalHistory.workAuthorization !== null ? professionalHistory.workAuthorization : '-'}}</td>
+                    <td>{{professionalHistory.addedOn !== null ? professionalHistory.addedOn : '-'}}</td>
+                    <td>{{professionalHistory.benchAge !== null ? professionalHistory.benchAge : '-'}}</td>
+                    <td>{{professionalHistory.technology !== null ? professionalHistory.technology : '-'}}</td>
+                    <td>{{professionalHistory.payType !== null ? professionalHistory.payType : '-'}}</td>
+                    <td>{{professionalHistory.additionalNotifiers !== null ? professionalHistory.additionalNotifiers : '-'}}</td>
+                    <td>{{professionalHistory.source !== null ? professionalHistory.source : '-'}}</td>
+                    <td>{{professionalHistory.workExperience !== null ? professionalHistory.workExperience : '-'}}</td>
+                    <td>{{professionalHistory.primarySkills != null ? professionalHistory.primarySkills : '-'}}</td>
+                    <td>{{professionalHistory.sellRateHelper !== null ? professionalHistory.sellRateHelper : '-'}}</td>
+                    <td>{{professionalHistory.createdBy !== null ? professionalHistory.createdBy : '-'}}</td>
+                    <td>{{professionalHistory.createdDate !== null ? (professionalHistory.createdDate | date:'mediumDate') : '-'}}</td>
+                    <td>{{professionalHistory.updatedBy !== null ? professionalHistory.updatedBy : '-'}}</td>
+                    <td>{{professionalHistory.updatedDate !== null ? (professionalHistory.updatedDate | date:'mediumDate') : '-'}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="errMessage" *ngIf="errorMessage">
+            <h5>No Data Found</h5>
+        </div>
+    </div>
+</div>

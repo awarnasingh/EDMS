@@ -1,0 +1,114 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.chartbox {
+  text-align: center;
+  // background-color: ghostwhite;
+}
+
+.heading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-variant: all-small-caps;
+  h2 {
+    padding-top: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: serif;
+  }
+}
+
+tr:nth-child(odd) {
+  background: white !important;
+}
+
+tr:nth-child(even) {
+  background: #eaeaea !important;
+}
+
+.errorMessage {
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
+    font-weight: 400;
+    font-family: monospace;
+    margin-top: 40px;
+}
+
+table {
+  // table-layout: fixed;
+  word-wrap: break-word;
+}
+
+td {
+  font-family: serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px !important;
+  height: 1.2em;
+  white-space: nowrap;
+}
+
+@media (max-width:425px){
+  .tableBox {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .row {
+        margin-left: 1px;
+    }
+}
+
+
+.sidenav {
+  height: 100% !important; /* 100% Full-height */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background: cadetblue;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  color: white;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  color: #eaeaea;
+  cursor: pointer;
+  font-family: fantasy;
+  text-transform: capitalize;
+  padding: 10px 0px;
+  font-size: 14px;
+}
+
+.element:active {
+background: #0e595b;
+}
+
+.newElement {
+  display: flex;
+  justify-content: flex-end;
+}
+
+a:hover {
+  color: #f1f1f1;
+  background: #0e595b;
+}
+
+.active {
+    color: #f1f1f1;
+    background: #0e595b;
+}

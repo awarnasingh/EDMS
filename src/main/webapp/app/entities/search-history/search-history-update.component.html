@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-search-history-heading">Create or edit a Search History</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!searchHistory.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_userID">User ID</label>
+                    <input type="text" class="form-control" name="userID" id="field_userID"
+                           formControlName="userID"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_searchName">Search Name</label>
+                    <input type="text" class="form-control" name="searchName" id="field_searchName"
+                           formControlName="searchName"/>
+                    <div *ngIf="editForm.get('searchName').invalid && (editForm.get('searchName').dirty || editForm.get('searchName').touched)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_empType">Emp Type</label>
+                    <input type="text" class="form-control" name="empType" id="field_empType"
+                           formControlName="empType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_domain">Domain</label>
+                    <input type="text" class="form-control" name="domain" id="field_domain"
+                           formControlName="domain"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fromExperience">From Experience</label>
+                    <input type="number" class="form-control" name="fromExperience" id="field_fromExperience"
+                           formControlName="fromExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_toExperience">To Experience</label>
+                    <input type="number" class="form-control" name="toExperience" id="field_toExperience"
+                           formControlName="toExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <input type="text" class="form-control" name="location" id="field_location"
+                           formControlName="location"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endClient">End Client</label>
+                    <input type="text" class="form-control" name="endClient" id="field_endClient"
+                           formControlName="endClient"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_skills">Skills</label>
+                    <input type="text" class="form-control" name="skills" id="field_skills"
+                           formControlName="skills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_employeeName">Employee Name</label>
+                    <input type="text" class="form-control" name="employeeName" id="field_employeeName"
+                           formControlName="employeeName"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

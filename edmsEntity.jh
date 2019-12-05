@@ -1,0 +1,48 @@
+entity Employee {
+	empType String required,
+    srsEmpId String,
+    fullName String required,
+    firstName String,
+    lastName String,
+    education String,
+    certification String,
+    email String unique required,
+    contactNo String unique required,
+    status String required,
+    createdBy String,
+    createdDate LocalDate,
+    updatedBy String,
+    updatedDate LocalDate
+}
+
+entity Professional {
+	location String required,
+    totalExperience Double required,
+    title String,
+    typeOfRole String,
+    skillCategory String,
+  	specificSkills String,
+    generalSkills String,
+    clientDomain String required,
+    mode String,
+    employer String required,
+    primeVendor String required,
+    endClient String required,
+    currentProjectStartDate LocalDate,
+    currentProjectEndDate LocalDate,
+	remarks String,
+     createdBy String,
+    createdDate LocalDate,
+    updatedBy String,
+    updatedDate LocalDate
+}
+
+relationship OneToOne {
+	Professional{employee} to Employee
+}
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

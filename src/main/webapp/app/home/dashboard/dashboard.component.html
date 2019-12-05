@@ -1,0 +1,32 @@
+
+<div class="flex-container">
+  <div class="header heading chartbox">
+    <h2>Dashboard</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <button class="button btn-primary" (click)="searchEmp()" >Assign Asset</button><br><br>
+
+      <button id="jh-create-entity" class="button btn-primary"  [routerLink]="['/professional','new']">
+        <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+       <span class="hidden-sm-down">Add Asset</span>
+      </button>
+
+      <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="button btn-primary"  [routerLink]="['/history/download-history']" >REPORTS</button>
+      <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="button btn-primary" [routerLink]="['/history/mail-history']" >RELEASE ASSET</button>
+        
+     <button id="jh-create-entity" class="button btn-primary"  [routerLink]="['/professional','new']">
+        <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+       <span class="hidden-sm-down">Add Employee</span>
+      </button>
+    
+     <button id="jh-create-entity" class="button btn-primary"  [routerLink]="['/professional','new']">
+        <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+       <span class="hidden-sm-down">Add Client</span>
+      </button>
+    </div>
+    
+                                    
+ 
+  </div>
+</div>

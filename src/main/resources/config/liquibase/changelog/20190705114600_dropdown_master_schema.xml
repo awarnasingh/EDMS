@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="autoIncrement" value="true" />
+	<changeSet id="20190705114601" author="mohan">
+		
+		<createTable tableName="emp_type">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+                  
+		<createTable tableName="client_domain">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="employer">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="end_client">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="prime_vendor">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="job_title">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="location">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="mode">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="pay_type">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="status">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+		
+		<createTable tableName="work_authorization">
+			<column name="id" type="bigint"	autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="status" type="boolean" defaultValue="true" />
+		</createTable>
+	
+	 <insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="emp_type">
+        <column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="C2C"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="emp_type">
+		<column name="id" type="bigint" value="2"/>
+		<column name="name" type="varchar(255)" value="W2"/>
+    </insert>
+    <insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="client_domain">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+    <insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="employer">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	 <insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="end_client">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+    <insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="prime_vendor">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="job_title">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="location">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="mode">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="pay_type">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="work_authorization">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="status">
+		<column name="id" type="bigint" value="1"/>
+		<column name="name" type="varchar(255)" value="N/A"/>
+    </insert>
+	<insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="status">
+		<column name="id" type="bigint" value="2"/>
+		<column name="name" type="varchar(255)" value="Active Bench"/>
+    </insert><insert catalogName="edms"  dbms="mysql" schemaName="public" tableName="status">
+		<column name="id" type="bigint" value="3"/>
+		<column name="name" type="varchar(255)" value="InActive Bench"/>
+    </insert>
+
+
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,335 @@
+<!--
+     Importent Note: Please Do not delete commented code we will use later
+ -->
+
+<button type="submit" routerLink="/dashboard" class="btn btn-info">
+    <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+</button>
+<div class="employee">
+    <form name="editForm" role="form" (ngSubmit)="f.form.valid && save();" #f="ngForm">
+        <div *ngIf="!id">
+            <h2 class="jhi-professional-heading">ADD ASSET</h2>
+        </div>
+        <div *ngIf="id">
+            <h2 class="jhi-professional-heading">Update Employee</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_empType">Asset Type</label>
+                    <select class="form-control" id="field_empType" name="empType" #empType="ngModel"
+                            [(ngModel)]="professional.employee.empType.id" maxlength="255"
+                            [ngClass]="{ 'is-invalid': f.submitted && empType.invalid }" required>
+                        <option [value]="entry.id"
+                                *ngFor='let entry of empTypeList'>{{entry.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && empType.invalid" class="invalid-feedback">
+                        <div *ngIf="empType.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fullName">Manufacturer</label>
+                    <input type="text" class="form-control" name="fullName" id="field_fullName" #fullName="ngModel"
+                           [(ngModel)]="professional.employee.fullName" maxlength="255"
+                           [ngClass]="{ 'is-invalid': f.submitted && fullName.invalid }" required/>
+                    <div *ngIf="f.submitted && fullName.invalid" class="invalid-feedback">
+                        <div *ngIf="fullName.errors.required">Field is required</div>
+                    </div>
+                </div>
+               <!--  <div class="form-group">
+                    <label class="form-control-label" for="field_workAuthorization">Work Authorization</label>
+                    <select class="form-control" id="field_workAuthorization" name="workAuthorization" maxlength="2000"
+                            [(ngModel)]="professional.workAuthorization.id" #workAuthorization="ngModel" [ngClass]="{ 'is-invalid': f.submitted && workAuthorization.invalid }" required>
+                        <option [value]="workAuth.id"
+                                *ngFor='let workAuth of workAuthorizationList'>{{workAuth.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && workAuthorization.invalid" class="invalid-feedback">
+                        <div *ngIf="workAuthorization.errors.required">Field is required</div>
+                    </div>
+                </div> -->
+                <!-- <div class="form-group">
+                    <label class="form-control-label" for="field_homePhone">Home Phone</label>
+                    <input type="text" class="form-control" name="homePhone" id="field_homePhone" maxlength="255"
+                           #homePhone="ngModel"
+                           [(ngModel)]="professional.employee.homePhone"/>
+                </div> -->
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mobileNumber">Model Number</label>
+                    <input type="text" class="form-control" name="mobileNumber" maxlength="255" id="field_mobileNumber"
+                           #mobileNumber="ngModel"
+                           [(ngModel)]="professional.employee.mobileNumber"/>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="form-control-label" for="field_workPhoneNumber">Work Phone Number</label>
+                    <input type="text" class="form-control" name="workPhoneNumber" maxlength="255"
+                           id="field_workPhoneNumber"
+                           #workPhoneNumber="ngModel"
+                           [(ngModel)]="professional.employee.workPhoneNumber"/>
+
+                </div> -->
+                <!-- <div class="form-group">
+                    <label class="form-control-label" for="field_source">Source</label>
+                    <input type="text" class="form-control" maxlength="255" name="source" id="field_source"
+                           [(ngModel)]="professional.source"/>
+                </div> -->
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projectStartDate">Procurement Date</label>
+                           <div class="input-group">
+                            <input id="field_projectStartDate" type="date" class="form-control" placeholder="yyyy-mm-dd" name="currentProjectStartDate"
+                                   [(ngModel)]="professional.currentProjectStartDate"/>
+                        </div>
+                </div>
+
+               <!--  <div class="form-group">
+                    <label class="form-control-label" for="field_endClient">End Client</label>
+                    <select class="form-control" id="field_endClient" name="endClient" maxlength="255"
+                            [(ngModel)]="professional.endClient.id"
+                            #endClient="ngModel" [ngClass]="{ 'is-invalid': f.submitted && endClient.invalid }" required>
+                        <option [value]="endClient.id"
+                                *ngFor='let endClient of endClientList'>{{endClient.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && endClient.invalid" class="invalid-feedback">
+                        <div *ngIf="endClient.errors.required">Field is required</div>
+                    </div>
+                </div> -->
+                <!-- <div class="form-group" *ngIf="professional.updatedBy">
+                    <label class="form-control-label" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           [(ngModel)]="professional.updatedBy" readonly/>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="email" class="form-control" name="email" id="field_email"
+                           [(ngModel)]="professional.employee.email" maxlength="255" [email]="true" #email="ngModel"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" maxlength="255"
+                            [(ngModel)]="professional.employee.status.id" #status="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && status.invalid }" required>
+                        <option [value]="status.id"
+                                *ngFor='let status of statusList '>{{status.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && status.invalid" class="invalid-feedback">
+                        <div *ngIf="status.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <select class="form-control" id="field_location" name="location"
+                            [(ngModel)]='professional.location.id'
+                            #location='ngModel' maxlength='255'
+                            [ngClass]="{ 'is-invalid': f.submitted && location.invalid }" required>
+                        <option [value]="location.id"
+                                *ngFor='let location of locationList '>{{location.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && location.invalid" class="invalid-feedback">
+                        <div *ngIf="location.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_totalExperience">Total Experience</label>
+                    <input type="number" min="0" max="100" class="form-control" name="totalExperience"
+                           id="field_totalExperience" [(ngModel)]="professional.totalExperience"
+                           #totalExperience="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && totalExperience.invalid }" required/>
+                    <div *ngIf="f.submitted && totalExperience.invalid" class="invalid-feedback">
+                        <div *ngIf="totalExperience.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_jobTitle">Job Title</label>
+                    <select class="form-control" id="field_jobTitle" name="jobTitle"
+                            [(ngModel)]='professional.jobTitle.id'
+                            #jobTitle='ngModel' maxlength='255'
+                            [ngClass]="{ 'is-invalid': f.submitted && jobTitle.invalid }" required>
+                        <option [value]="jobTitle.id"
+                                *ngFor='let jobTitle of jobTitleList'>{{jobTitle.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && jobTitle.invalid" class="invalid-feedback">
+                        <div *ngIf="jobTitle.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_benchAge">Bench Age</label>
+                    <input type="text" class="form-control" name="benchAge" maxlength="255"
+                           id="field_benchAge" [(ngModel)]="professional.benchAge" #benchAge="ngModel"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_technology">Technology</label>
+                    <input type="text" class="form-control" name="technology" maxlength="255"
+                           id="field_technology" [(ngModel)]="professional.technology" #technology="ngModel"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_layer_1">Layer 1</label>
+                    <input type="text" class="form-control" name="layerOne" maxlength="255"
+                           id="field_layer_1" [(ngModel)]="professional.layerOne" #layerOne="ngModel"/>
+                </div>
+                <div class="form-group" *ngIf="professional.updatedDate">
+                    <label class="form-control-label" for="field_updatedDate">Updated Date</label>
+                    <div class="input-group">
+                        <input id="field_updatedDate" type="text" class="form-control" name="updatedDate"
+                               [(ngModel)]="professional.updatedDate" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeOfRole">Type Of Role</label>
+                    <input type="text" class="form-control" name="typeOfRole" id="field_typeOfRole" maxlength="255"
+                           [(ngModel)]="professional.typeOfRole"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_specificSkills">Specific Skills</label>
+                    <input type="text" class="form-control" name="specificSkills" id="field_specificSkills"
+                           maxlength="1000"
+                           [(ngModel)]="professional.specificSkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_generalSkills">General Skills</label>
+                    <input type="text" class="form-control" name="generalSkills" id="field_generalSkills"
+                           maxlength="1000"
+                           [(ngModel)]="professional.generalSkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mode">Mode</label>
+                    <select class="form-control" id="field_mode" name="mode" [(ngModel)]="professional.mode.id"
+                            maxlength="255" [ngClass]="{ 'is-invalid': f.submitted && mode.invalid }" required
+                            #mode="ngModel" >
+                        <option [value]="mode.id" *ngFor='let mode of modeList '>{{mode.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && mode.invalid" class="invalid-feedback">
+                        <div *ngIf="mode.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_employer">Employer</label>
+                    <select class="form-control" id="field_employer" name="employer"
+                            [(ngModel)]="professional.employer.id"
+                            maxlength="255" #employer="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && employer.invalid }" required>
+                        <option [value]="employer.id"
+                                *ngFor='let employer of employerList '>{{employer.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && employer.invalid" class="invalid-feedback">
+                        <div *ngIf="employer.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_payType">Pay Type</label>
+                    <select class="form-control" id="field_payType" name="payType" maxlength="255"
+                            [(ngModel)]="professional.payType.id" [ngClass]="{ 'is-invalid': f.submitted && payType.invalid }" required
+                            #payType="ngModel">
+                        <option [value]="payType.id"
+                                *ngFor='let payType of payTypeList '>{{payType.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && payType.invalid" class="invalid-feedback">
+                        <div *ngIf="payType.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="professional.employee.createdBy">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <div class="input-group">
+                        <input id="field_createdBy" type="text" class="form-control" name="createdBy"
+                               [(ngModel)]="professional.employee.createdBy" readonly/>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_prime_vendor">Prime Vendor</label>
+                    <select class="form-control" id="field_prime_vendor" name="vendor" maxlength="255"
+                            [(ngModel)]="professional.primeVendor.id"
+                            #vendor="ngModel" [ngClass]="{ 'is-invalid': f.submitted && vendor.invalid }" required>
+                        <option [value]="vendor.id"
+                                *ngFor='let vendor of primeVendorList '>{{vendor.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && vendor.invalid" class="invalid-feedback">
+                        <div *ngIf="vendor.errors.required">Field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_layer_2">Layer 2</label>
+                    <input type="text" class="form-control" name="layerTwo" maxlength="255"
+                           id="field_layer_2" [(ngModel)]="professional.layerTwo" #layerTwo="ngModel"/>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remarks">Remarks</label>
+                    <input type="text" class="form-control" name="remarks" id="field_remarks" maxlength="255"
+                           [(ngModel)]="professional.remarks"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_workExperience">Work Experience</label>
+                    <input type="text" class="form-control" name="workExperience" id="field_workExperience"
+                           maxlength="255"
+                           [(ngModel)]="professional.workExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_primarySkills">Primary Skills</label>
+                    <input type="text" class="form-control" name="primarySkills" id="field_primarySkills"
+                           maxlength="1000"
+                           [(ngModel)]="professional.primarySkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dob">DOB</label>
+                    <div class="input-group">
+                        <input id="field_dob" type="date" class="form-control" placeholder="yyyy-mm-dd" name="dob"
+                               [(ngModel)]="professional.employee.dob"/>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_addedOnDate">AddedOn</label>
+                    <div class="input-group">
+                        <input id="field_addedOnDate" type="date" class="form-control" placeholder="yyyy-mm-dd"
+                               name="addedOn" [(ngModel)]="professional.addedOn"/>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="professional.employee.createdDate">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <input type="text" class="form-control" name="createdDate" id="field_createdDate"
+                           [(ngModel)]="professional.employee.createdDate" readonly/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_additionalNotifiers">Additional Notifiers</label>
+                    <input type="text" class="form-control" name="additionalNotifiers" id="field_additionalNotifiers"
+                           maxlength="255" [(ngModel)]="professional.additionalNotifiers"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_clientDomain">Client Domain</label>
+                    <select class="form-control" id="field_clientDomain" name="clientDomain" maxlength="255"
+                            [(ngModel)]="professional.clientDomain.id"
+                            #clientDomain="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && clientDomain.invalid }" required>
+                        <option [value]="domain.id"
+                                *ngFor='let domain of domainList'>{{domain.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && clientDomain.invalid" class="invalid-feedback">
+                        <div *ngIf="clientDomain.errors.required">Field is required</div>
+                    </div> -->
+                </div>
+               <!--  <div class="form-group">
+                    <label class="form-control-label" for="field_srsStartDate">SRS Joining Date</label>
+                           <div class="input-group">
+                            <input id="field_srsStartDate" type="date" class="form-control" placeholder="yyyy-mm-dd" name="srsJoiningDate"
+                                   [(ngModel)]="professional.srsJoiningDate"/>
+    
+                        </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="btnemp">
+            <button type="submit" id="save-entity" class="btn btnStyle btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+            </button>
+            <button type="button" id="cancel-save" class="btn btnStyle btn-secondary" (click)="previousState()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+            </button>
+        </div>
+    </form>
+</div>

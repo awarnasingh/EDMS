@@ -1,0 +1,94 @@
+
+<div class="card container" style="width: 50%;">
+	<div class="card-body">
+		<h5 class="card-title">
+			<button type="submit" routerLink="../../" class="btn btn-info">
+				<fa-icon [icon]="'arrow-left'"></fa-icon>
+				&nbsp;<span> Back</span>
+			</button>
+		</h5>
+		<h2 class="card-text text-center">
+			<span>User</span> [<b>{{user.login}}</b>]
+		</h2>
+
+	</div>
+	<div class="card-body" *ngIf="user">
+		<div class="container" style="width: 100%">
+			<div class="row"></div>
+			<div *ngIf="user">
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Login</strong>
+					</div>
+					<div class="col-8 form-control">
+						<span>{{user.login}}</span>
+						<jhi-boolean [value]="user.activated" textTrue="Activated"
+							textFalse="Deactivated"> </jhi-boolean>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>First Name</strong>
+					</div>
+					<div class="col-8 form-control">{{user.firstName}}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Last Name</strong>
+					</div>
+					<div class="col-8 form-control">{{user.lastName}}</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Email</strong>
+					</div>
+					<div class="col-8 form-control">{{user.email}}</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Created By</strong>
+					</div>
+					<div class="col-8 form-control">{{user.createdBy}}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Created Date</strong>
+					</div>
+					<div class="col-8 form-control">{{user.createdDate |
+						date:'dd/MM/yy HH:mm' }}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Last Modified By</strong>
+					</div>
+					<div class="col-8 form-control">{{user.lastModifiedBy}}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Last Modified Date</strong>
+					</div>
+					<div class="col-8 form-control">{{user.lastModifiedDate |
+						date:'dd/MM/yy HH:mm'}}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-4 form-control-label">
+						<strong>Profiles</strong>
+					</div>
+					<div class="col-8 form-control">
+						<ul class="list-unstyled">
+							<li *ngFor="let authority of user.authorities"><span
+								class="badge badge-info">{{authority}}</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

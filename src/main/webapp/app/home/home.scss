@@ -1,0 +1,128 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.form-control {
+  min-height: 41px;
+  background: #fff;
+  box-shadow: none !important;
+  border-color: #e3e3e3;
+}
+
+.form-control:focus {
+  border-color: #70c5c0;
+}
+
+.form-control, .btn {
+  font-family: serif;
+  border-radius: 20px;
+}
+
+.login-form {
+  width: 350px;
+  margin: 0 auto;
+  padding: 90px 0 30px;
+}
+
+.login-form form {
+  color: #edf3f4a3;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  background: #a4b79c4f;
+  box-shadow: 0px 2px 10px 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  position: relative;
+}
+
+.login-form h2 {
+  font-size: 18px;
+  font-family: serif;
+  color: darkblue;
+  margin: 20px 0;
+}
+
+.login-form .avatar {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -50px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #dbe2ef;
+  padding: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.login-form .avatar img {
+  width: 100%;
+}
+
+.login-form input[type='checkbox'] {
+  margin-top: 2px;
+}
+
+.login-form .btn {
+  font-size: 16px;
+  font-family: serif;
+  font-weight: bold;
+  background: #63b5ab9e;
+  border: none;
+  margin-bottom: 10px;
+
+}
+
+.login-form .btn:hover,
+.login-form .btn:focus {
+  background: #50b8b3;
+  outline: none !important;
+}
+
+.login-form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.login-form a:hover {
+  text-decoration: none;
+}
+
+.login-form form a {
+  color: #af0c0cb5;
+  text-decoration: none;
+}
+
+.login-form form a:hover {
+  text-decoration: underline;
+}
+
+.pull-right {
+  float: right;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.1rem;
+  font-size: 1.2em;
+}
+
+.input-group-text {
+  font-size: 1em;
+  background: #86b6bf;
+}
+
+.danger-box {
+  justify-content: center;
+  display: flex;
+  /* margin: 1px 0 0 0; */
+  padding-top: 20px;
+}
+
+.danger-content {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}

@@ -1,0 +1,14 @@
+
+entity SearchHistory {
+	userID String,
+    searchName String unique,
+	empType String,
+	domain String,
+	fromExperience Double,
+    toExperience Double,
+    location String,
+    status String,
+    endClient String,
+    skills String,
+    employeeName String    
+}

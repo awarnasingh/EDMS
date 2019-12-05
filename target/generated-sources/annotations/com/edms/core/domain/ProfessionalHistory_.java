@@ -1,0 +1,117 @@
+package com.edms.core.domain;
+
+import java.time.LocalDate;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(ProfessionalHistory.class)
+public abstract class ProfessionalHistory_ {
+
+	public static volatile SingularAttribute<ProfessionalHistory, String> education;
+	public static volatile SingularAttribute<ProfessionalHistory, String> empType;
+	public static volatile SingularAttribute<ProfessionalHistory, String> srsEmpId;
+	public static volatile SingularAttribute<ProfessionalHistory, String> mobileNumber;
+	public static volatile SingularAttribute<ProfessionalHistory, String> jobTitle;
+	public static volatile SingularAttribute<ProfessionalHistory, String> workExperience;
+	public static volatile SingularAttribute<ProfessionalHistory, String> source;
+	public static volatile SingularAttribute<ProfessionalHistory, LocalDate> updatedDate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> mode;
+	public static volatile SingularAttribute<ProfessionalHistory, Double> sellRateHelper;
+	public static volatile SingularAttribute<ProfessionalHistory, String> payType;
+	public static volatile SingularAttribute<ProfessionalHistory, String> workPhoneNumber;
+	public static volatile SingularAttribute<ProfessionalHistory, String> additionalNotifiers;
+	public static volatile SingularAttribute<ProfessionalHistory, String> employer;
+	public static volatile SingularAttribute<ProfessionalHistory, Long> id;
+	public static volatile SingularAttribute<ProfessionalHistory, String> updatedBy;
+	public static volatile SingularAttribute<ProfessionalHistory, String> homePhone;
+	public static volatile SingularAttribute<ProfessionalHistory, String> primeVendor;
+	public static volatile SingularAttribute<ProfessionalHistory, String> endClient;
+	public static volatile SingularAttribute<ProfessionalHistory, String> certification;
+	public static volatile SingularAttribute<ProfessionalHistory, String> layerOne;
+	public static volatile SingularAttribute<ProfessionalHistory, String> firstName;
+	public static volatile SingularAttribute<ProfessionalHistory, String> sellRate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> dOB;
+	public static volatile SingularAttribute<ProfessionalHistory, Double> totalExperience;
+	public static volatile SingularAttribute<ProfessionalHistory, String> status;
+	public static volatile SingularAttribute<ProfessionalHistory, String> lastName;
+	public static volatile SingularAttribute<ProfessionalHistory, String> layerTwo;
+	public static volatile SingularAttribute<ProfessionalHistory, String> city;
+	public static volatile SingularAttribute<ProfessionalHistory, String> layerThree;
+	public static volatile SingularAttribute<ProfessionalHistory, String> typeOfRole;
+	public static volatile SingularAttribute<ProfessionalHistory, String> skillCategory;
+	public static volatile SingularAttribute<ProfessionalHistory, String> benchAge;
+	public static volatile SingularAttribute<ProfessionalHistory, String> srsJoiningDate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> workAuthorization;
+	public static volatile SingularAttribute<ProfessionalHistory, String> currentProjectStartDate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> layerFour;
+	public static volatile SingularAttribute<ProfessionalHistory, String> clientDomain;
+	public static volatile SingularAttribute<ProfessionalHistory, String> primarySkills;
+	public static volatile SingularAttribute<ProfessionalHistory, Long> professionalId;
+	public static volatile SingularAttribute<ProfessionalHistory, String> email;
+	public static volatile SingularAttribute<ProfessionalHistory, String> fullName;
+	public static volatile SingularAttribute<ProfessionalHistory, String> technology;
+	public static volatile SingularAttribute<ProfessionalHistory, String> addedOn;
+	public static volatile SingularAttribute<ProfessionalHistory, String> specificSkills;
+	public static volatile SingularAttribute<ProfessionalHistory, LocalDate> createdDate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> createdBy;
+	public static volatile SingularAttribute<ProfessionalHistory, LocalDate> currentProjectEndDate;
+	public static volatile SingularAttribute<ProfessionalHistory, String> location;
+	public static volatile SingularAttribute<ProfessionalHistory, String> generalSkills;
+	public static volatile SingularAttribute<ProfessionalHistory, String> remarks;
+
+	public static final String EDUCATION = "education";
+	public static final String EMP_TYPE = "empType";
+	public static final String SRS_EMP_ID = "srsEmpId";
+	public static final String MOBILE_NUMBER = "mobileNumber";
+	public static final String JOB_TITLE = "jobTitle";
+	public static final String WORK_EXPERIENCE = "workExperience";
+	public static final String SOURCE = "source";
+	public static final String UPDATED_DATE = "updatedDate";
+	public static final String MODE = "mode";
+	public static final String SELL_RATE_HELPER = "sellRateHelper";
+	public static final String PAY_TYPE = "payType";
+	public static final String WORK_PHONE_NUMBER = "workPhoneNumber";
+	public static final String ADDITIONAL_NOTIFIERS = "additionalNotifiers";
+	public static final String EMPLOYER = "employer";
+	public static final String ID = "id";
+	public static final String UPDATED_BY = "updatedBy";
+	public static final String HOME_PHONE = "homePhone";
+	public static final String PRIME_VENDOR = "primeVendor";
+	public static final String END_CLIENT = "endClient";
+	public static final String CERTIFICATION = "certification";
+	public static final String LAYER_ONE = "layerOne";
+	public static final String FIRST_NAME = "firstName";
+	public static final String SELL_RATE = "sellRate";
+	public static final String D_OB = "dOB";
+	public static final String TOTAL_EXPERIENCE = "totalExperience";
+	public static final String STATUS = "status";
+	public static final String LAST_NAME = "lastName";
+	public static final String LAYER_TWO = "layerTwo";
+	public static final String CITY = "city";
+	public static final String LAYER_THREE = "layerThree";
+	public static final String TYPE_OF_ROLE = "typeOfRole";
+	public static final String SKILL_CATEGORY = "skillCategory";
+	public static final String BENCH_AGE = "benchAge";
+	public static final String SRS_JOINING_DATE = "srsJoiningDate";
+	public static final String WORK_AUTHORIZATION = "workAuthorization";
+	public static final String CURRENT_PROJECT_START_DATE = "currentProjectStartDate";
+	public static final String LAYER_FOUR = "layerFour";
+	public static final String CLIENT_DOMAIN = "clientDomain";
+	public static final String PRIMARY_SKILLS = "primarySkills";
+	public static final String PROFESSIONAL_ID = "professionalId";
+	public static final String EMAIL = "email";
+	public static final String FULL_NAME = "fullName";
+	public static final String TECHNOLOGY = "technology";
+	public static final String ADDED_ON = "addedOn";
+	public static final String SPECIFIC_SKILLS = "specificSkills";
+	public static final String CREATED_DATE = "createdDate";
+	public static final String CREATED_BY = "createdBy";
+	public static final String CURRENT_PROJECT_END_DATE = "currentProjectEndDate";
+	public static final String LOCATION = "location";
+	public static final String GENERAL_SKILLS = "generalSkills";
+	public static final String REMARKS = "remarks";
+
+}
+

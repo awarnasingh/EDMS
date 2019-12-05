@@ -1,0 +1,96 @@
+<div>
+    <h2 id="page-heading">
+        <span>Professionals</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-professional" [routerLink]="['/professional/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Professional
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="professionals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Location</span></th>
+            <th><span>Total Experience</span></th>
+            <th><span>Title</span></th>
+            <th><span>Type Of Role</span></th>
+            <th><span>Skill Category</span></th>
+            <th><span>Specific Skills</span></th>
+            <th><span>General Skills</span></th>
+            <th><span>Client Domain</span></th>
+            <th><span>Mode</span></th>
+            <th><span>Employer</span></th>
+            <th><span>Prime Vendor</span></th>
+            <th><span>End Client</span></th>
+            <th><span>Current Project Start Date</span></th>
+            <th><span>Current Project End Date</span></th>
+            <th><span>Remarks</span></th>
+            <th><span>Created By</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Updated By</span></th>
+            <th><span>Updated Date</span></th>
+            <th><span>Employee</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let professional of professionals ;trackBy: trackId">
+                <td><a [routerLink]="['/professional', professional.id, 'view' ]">{{professional.id}}</a></td>
+                <td>{{professional.location}}</td>
+                <td>{{professional.totalExperience}}</td>
+                <td>{{professional.title}}</td>
+                <td>{{professional.typeOfRole}}</td>
+                <td>{{professional.skillCategory}}</td>
+                <td>{{professional.specificSkills}}</td>
+                <td>{{professional.generalSkills}}</td>
+                <td>{{professional.clientDomain}}</td>
+                <td>{{professional.mode}}</td>
+                <td>{{professional.employer}}</td>
+                <td>{{professional.primeVendor}}</td>
+                <td>{{professional.endClient}}</td>
+                <td>{{professional.currentProjectStartDate | date:'mediumDate'}}</td>
+                <td>{{professional.currentProjectEndDate | date:'mediumDate'}}</td>
+                <td>{{professional.remarks}}</td>
+                <td>{{professional.createdBy}}</td>
+                <td>{{professional.createdDate | date:'mediumDate'}}</td>
+                <td>{{professional.updatedBy}}</td>
+                <td>{{professional.updatedDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="professional.employee">
+                        <a [routerLink]="['../employee', professional.employee?.id, 'view' ]" >{{professional.employee?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/professional', professional.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/professional', professional.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'professional', { outlets: { popup: professional.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

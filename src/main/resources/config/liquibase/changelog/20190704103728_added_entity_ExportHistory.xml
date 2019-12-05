@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="autoIncrement" value="true" />
+
+	<!-- Added the entity Export - History. -->
+	<changeSet id="20190619072052-1" author="jhipster">
+		<createTable tableName="export_history">
+			<column name="id" type="bigint"
+				autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="user_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+			<column name="export_date" type="timestamp">
+				<constraints nullable="true" />
+			</column>
+			<column name="export_download" type="boolean"
+				defaultValue="false">
+			</column>
+			<column name="export_mail" type="boolean" defaultValue="false">
+			</column>
+			<column name="row_count" type="number" defaultValue="0">
+			</column>
+			
+			<column name="emp_type_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="domain_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="from_experience" type="double">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="to_experience" type="double">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="location_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="status_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="end_client_id" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="skills" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="employee_name" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+		</createTable>
+
+	</changeSet>
+
+</databaseChangeLog>

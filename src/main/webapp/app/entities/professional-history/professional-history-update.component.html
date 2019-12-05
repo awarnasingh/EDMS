@@ -1,0 +1,265 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-professional-history-heading">Create or edit a Professional History</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!professionalHistory.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_professionalId">Professional Id</label>
+                    <input type="number" class="form-control" name="professionalId" id="field_professionalId"
+                           formControlName="professionalId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_empType">Emp Type</label>
+                    <input type="text" class="form-control" name="empType" id="field_empType"
+                           formControlName="empType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_srsEmpId">Srs Emp Id</label>
+                    <input type="text" class="form-control" name="srsEmpId" id="field_srsEmpId"
+                           formControlName="srsEmpId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fullName">Full Name</label>
+                    <input type="text" class="form-control" name="fullName" id="field_fullName"
+                           formControlName="fullName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                           formControlName="firstName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                           formControlName="lastName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_education">Education</label>
+                    <input type="text" class="form-control" name="education" id="field_education"
+                           formControlName="education"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_certification">Certification</label>
+                    <input type="text" class="form-control" name="certification" id="field_certification"
+                           formControlName="certification"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_homePhone">Home Phone</label>
+                    <input type="text" class="form-control" name="homePhone" id="field_homePhone"
+                           formControlName="homePhone"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mobileNumber">Mobile Number</label>
+                    <input type="text" class="form-control" name="mobileNumber" id="field_mobileNumber"
+                           formControlName="mobileNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_workPhoneNumber">Work Phone Number</label>
+                    <input type="text" class="form-control" name="workPhoneNumber" id="field_workPhoneNumber"
+                           formControlName="workPhoneNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dOB">D OB</label>
+                    <input type="text" class="form-control" name="dOB" id="field_dOB"
+                           formControlName="dOB"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                           formControlName="city"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <input type="text" class="form-control" name="location" id="field_location"
+                           formControlName="location"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_totalExperience">Total Experience</label>
+                    <input type="number" class="form-control" name="totalExperience" id="field_totalExperience"
+                           formControlName="totalExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_jobTitle">Job Title</label>
+                    <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
+                           formControlName="jobTitle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeOfRole">Type Of Role</label>
+                    <input type="text" class="form-control" name="typeOfRole" id="field_typeOfRole"
+                           formControlName="typeOfRole"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_skillCategory">Skill Category</label>
+                    <input type="text" class="form-control" name="skillCategory" id="field_skillCategory"
+                           formControlName="skillCategory"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_specificSkills">Specific Skills</label>
+                    <input type="text" class="form-control" name="specificSkills" id="field_specificSkills"
+                           formControlName="specificSkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_generalSkills">General Skills</label>
+                    <input type="text" class="form-control" name="generalSkills" id="field_generalSkills"
+                           formControlName="generalSkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_clientDomain">Client Domain</label>
+                    <input type="text" class="form-control" name="clientDomain" id="field_clientDomain"
+                           formControlName="clientDomain"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mode">Mode</label>
+                    <input type="text" class="form-control" name="mode" id="field_mode"
+                           formControlName="mode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_employer">Employer</label>
+                    <input type="text" class="form-control" name="employer" id="field_employer"
+                           formControlName="employer"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_primeVendor">Prime Vendor</label>
+                    <input type="text" class="form-control" name="primeVendor" id="field_primeVendor"
+                           formControlName="primeVendor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endClient">End Client</label>
+                    <input type="text" class="form-control" name="endClient" id="field_endClient"
+                           formControlName="endClient"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_currentProjectStartDate">Current Project Start Date</label>
+                    <div class="input-group">
+                        <input id="field_currentProjectStartDate" type="text" class="form-control" name="currentProjectStartDate" ngbDatepicker  #currentProjectStartDateDp="ngbDatepicker" formControlName="currentProjectStartDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="currentProjectStartDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_currentProjectEndDate">Current Project End Date</label>
+                    <div class="input-group">
+                        <input id="field_currentProjectEndDate" type="text" class="form-control" name="currentProjectEndDate" ngbDatepicker  #currentProjectEndDateDp="ngbDatepicker" formControlName="currentProjectEndDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="currentProjectEndDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remarks">Remarks</label>
+                    <input type="text" class="form-control" name="remarks" id="field_remarks"
+                           formControlName="remarks"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sellRate">Sell Rate</label>
+                    <input type="text" class="form-control" name="sellRate" id="field_sellRate"
+                           formControlName="sellRate"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_workAuthorization">Work Authorization</label>
+                    <input type="text" class="form-control" name="workAuthorization" id="field_workAuthorization"
+                           formControlName="workAuthorization"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_addedOn">Added On</label>
+                    <input type="text" class="form-control" name="addedOn" id="field_addedOn"
+                           formControlName="addedOn"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_benchAge">Bench Age</label>
+                    <input type="text" class="form-control" name="benchAge" id="field_benchAge"
+                           formControlName="benchAge"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_technology">Technology</label>
+                    <input type="text" class="form-control" name="technology" id="field_technology"
+                           formControlName="technology"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_payType">Pay Type</label>
+                    <input type="text" class="form-control" name="payType" id="field_payType"
+                           formControlName="payType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_additionalNotifiers">Additional Notifiers</label>
+                    <input type="text" class="form-control" name="additionalNotifiers" id="field_additionalNotifiers"
+                           formControlName="additionalNotifiers"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_source">Source</label>
+                    <input type="text" class="form-control" name="source" id="field_source"
+                           formControlName="source"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_workExperience">Work Experience</label>
+                    <input type="text" class="form-control" name="workExperience" id="field_workExperience"
+                           formControlName="workExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_primarySkills">Primary Skills</label>
+                    <input type="text" class="form-control" name="primarySkills" id="field_primarySkills"
+                           formControlName="primarySkills"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sellRateHelper">Sell Rate Helper</label>
+                    <input type="number" class="form-control" name="sellRateHelper" id="field_sellRateHelper"
+                           formControlName="sellRateHelper"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updatedDate">Updated Date</label>
+                    <div class="input-group">
+                        <input id="field_updatedDate" type="text" class="form-control" name="updatedDate" ngbDatepicker  #updatedDateDp="ngbDatepicker" formControlName="updatedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="updatedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

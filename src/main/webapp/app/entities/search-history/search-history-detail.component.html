@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="searchHistory">
+            <h2><span>Search History</span> {{searchHistory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>User ID</span></dt>
+                <dd>
+                    <span>{{searchHistory.userID}}</span>
+                </dd>
+                <dt><span>Search Name</span></dt>
+                <dd>
+                    <span>{{searchHistory.searchName}}</span>
+                </dd>
+                <dt><span>Emp Type</span></dt>
+                <dd>
+                    <span>{{searchHistory.empType}}</span>
+                </dd>
+                <dt><span>Domain</span></dt>
+                <dd>
+                    <span>{{searchHistory.domain}}</span>
+                </dd>
+                <dt><span>From Experience</span></dt>
+                <dd>
+                    <span>{{searchHistory.fromExperience}}</span>
+                </dd>
+                <dt><span>To Experience</span></dt>
+                <dd>
+                    <span>{{searchHistory.toExperience}}</span>
+                </dd>
+                <dt><span>Location</span></dt>
+                <dd>
+                    <span>{{searchHistory.location}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{searchHistory.status}}</span>
+                </dd>
+                <dt><span>End Client</span></dt>
+                <dd>
+                    <span>{{searchHistory.endClient}}</span>
+                </dd>
+                <dt><span>Skills</span></dt>
+                <dd>
+                    <span>{{searchHistory.skills}}</span>
+                </dd>
+                <dt><span>Employee Name</span></dt>
+                <dd>
+                    <span>{{searchHistory.employeeName}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/search-history', searchHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

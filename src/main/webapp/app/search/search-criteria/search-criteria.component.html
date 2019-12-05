@@ -1,0 +1,489 @@
+
+
+<div class="empContainer">
+    <button type="submit" routerLink="/dashboard" class="btn btn-info">
+    <fa-icon [icon]="'arrow-right'"></fa-icon>&nbsp;<span> Back</span>
+</button>
+        <button class="btn btn-primary" [routerLink]="['/professional','new']">
+            <span>ADD ASSET</span>
+        </button>
+  
+    <div class="empcard" style="border: 1px solid black; margin: 5px;">
+       <form class="empdetails">
+           <div class="empDetailOptions">
+            <div class="form-group col-md-4 col-xs-12">
+                        <label for="location">Asset Type:</label>
+                        <select id="location" #location (change)="storeLocation(location.value)" class="form-control">
+                            <option value="">Select Asset Type</option>
+                            <option [value]="location.id" *ngFor='let location of locationList'>{{location.name}}</option>
+                        </select>
+                    </div>
+                    
+                <!-- <div class="empDropDown row">
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="domain">Serial No:</label>
+                        <select #domain id="domain" (change)="storeDomain(domain.value)" class="form-control">
+                            <option value="">Select Serial No</option>
+                            <option [value]="domain.id" *ngFor='let domain of domainList'>{{domain.name}}</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="empDropDown row">    
+                    <div class="empdetailsOptions">
+                       <div class="col-md-4 col-xs-12 ">
+                            <label for="serialNo"> Serial No:</label>
+                            <input class="form-control" type="text" id="serialNo" name="serialNo" [(ngModel)]="serialNo" style="width:auto;">
+                      </div>
+                    </div>
+                </div>
+            <div class="empDropDown row">    
+                <div class="empdetailsOptions">
+                   <div class="col-md-4 col-xs-12 form-group">
+                        <label for="fullName"> Assign To:</label>
+                        <input class="form-control" type="text" id="fullName" name="fullName" [(ngModel)]="fullName" style="width:auto;">
+                  </div>
+                </div>
+            </div>
+                <div class="empDropDown row">
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_addedOnDate" style="margin-right: 350px;">Assignment Date</label>
+                    <div class="input-group">
+                        <input id="field_addedOnDate" type="date" class="form-control" placeholder="yyyy-mm-dd"
+                               name="addedOn" [(ngModel)]="professional.addedOn"/>
+                    </div>
+                </div>
+                </div>
+             </div>
+             </div>
+            
+            <div class="submitButton">
+                <button type="submit" class="btn btn-primary text-center searchBtn" (click)="sendResult()">Search
+                </button>
+                <button type="reset" class="btn btn-primary text-center resetBtn" (click)="reset()">Reset</button>
+                <button *ngIf="searchResult" class="btn btn-primary" (click)="saveSearchForFuture(searchNameSavePopUp)">
+                    Save Search
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <ng-template #searchNameSavePopUp let-modal>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add To Search History</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label> Please EnterName to Save the Search : </label>
+                <input type="text" name="searchHistoryName" [(ngModel)]="searchHistoryName">
+            </div>
+            <div class="modal-footer">
+                <button class="mat-raised-button" (click)="close()">Close</button>
+                <button class="mat-raised-button" (click)="saveSearchHistory()">Save</button>
+            </div>
+        </div>
+    </ng-template>
+    <div ngDraggable class="drag">
+        <button type="button" class="btn btn-primary btn-circle btn-xl text-center" (click)="shows()">
+            <h6>
+                <small>saved search</small>
+            </h6>
+        </button>
+        <div *ngIf="show" class="history">
+            <ul *ngFor="let search of searchHistories; let i of index">
+                <li (click)="nameSearch(i)">{{search.searchName}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="empTable table-responsive" *ngIf='searchResult'>
+        <div class="emp-container mat-elevation-z8" style="margin-top: 2%;width: 100%;" *ngIf='!errorMessage'>
+            <div class="filter">
+                <input class="form-control filterInput" type="text" (keyup)="applyFilter($event.target.value)"
+                       placeholder="Filter">
+            </div>
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="employee.id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.employee.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Employee Column -->
+                <ng-container matColumnDef="employee.fullName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Emp Name</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.employee.fullName}} </mat-cell>
+                </ng-container>
+
+                <!-- Type Column -->
+                <ng-container matColumnDef="employee.empType">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Emp Type</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.employee.empType.name}} </mat-cell>
+                </ng-container>
+
+                <!-- Visa Status -->
+                <ng-container matColumnDef="visaStatus.name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Visa Status</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.visaStatus.name}} </mat-cell>
+                </ng-container>
+
+                 <!-- Layer 1 -->
+                 <ng-container matColumnDef="layerOne">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Layer 1</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.layerOne}} </mat-cell>
+                </ng-container>
+
+                 <!-- Layer 2 -->
+                 <ng-container matColumnDef="layerTwo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Layer 2</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.layerTwo}} </mat-cell>
+                </ng-container>
+
+                <!-- Srs Joining Date -->
+                <ng-container matColumnDef="srsJoiningDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>SRS Start Date</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.srsJoiningDate}} </mat-cell>
+                </ng-container>
+
+                 <!-- Project Start Date -->
+                 <ng-container matColumnDef="currentProjectStartDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Current Project Start Date</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.currentProjectStartDate}} </mat-cell>
+                </ng-container>
+
+
+                <!-- End Client Column -->
+                <ng-container matColumnDef="endClient">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> End Client</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.endClient.name}} </mat-cell>
+                </ng-container>
+
+                 <!-- Action Column -->
+                 <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <i class="fa fa-pencil-square-o" style="font-size:20px;color:black"></i>
+                    </mat-cell>
+                </ng-container>
+                
+
+                <!-- Title Column -->
+                <!-- <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Title</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+                </ng-container> -->
+
+                <!-- Location Column -->
+                <!-- <ng-container matColumnDef="location">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Location</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.location.name}} </mat-cell>
+                </ng-container> -->
+
+                <!-- Experience Column -->
+                <!-- <ng-container matColumnDef="totalExperience">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Experience</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.totalExperience}} </mat-cell>
+                </ng-container> -->
+
+                <!-- Status Column -->
+                <!-- <ng-container matColumnDef="employee.status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.employee.status.name}} </mat-cell>
+                </ng-container> -->
+
+
+                <!-- General Skills Column -->
+                <!-- <ng-container matColumnDef="specificSkills">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> General Skills</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.specificSkills}} </mat-cell>
+                </ng-container> -->
+
+                <!-- Domain Column -->
+                <!-- <ng-container matColumnDef="clientDomain">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Client Domain</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.clientDomain.name}} </mat-cell>
+                </ng-container> -->
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row (click)="selectRow(mytemplate, row)" *matRowDef="let row; columns: displayedColumns;">
+                    <ng-template #mytemplate let-modal class="modal-box">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Employee Details</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body row-md jh-entity-details">
+                                <div class="grid-container">
+                                    <div>
+                                        <label class="label">Id :</label>{{row.employee.id}} <br>
+                                        <label class="label">Asset Type : </label>{{row.employee.empType.name}} <br>
+                                        <label class="label">Manufacturer : </label>{{row.employee.fullName}} <br>
+                                        <!-- <label class="label">Email :</label>{{row.employee.email}} <br>
+                                        <label class="label">Status :</label>{{row.employee.status.name}}<br> -->
+                                       <!--  <label class="label">Home Phone :</label>{{row.employee.homePhone}} <br> -->
+                                        <label class="label">Model Number :</label>{{row.employee.mobileNumber}} <br>
+                                       <!--  <label class="label">Work Phone Number :</label>{{row.employee.workPhoneNumber}}
+                                        <br>
+                                        <label class="label">Work Authorization :</label>{{row.workAuthorization.name}}
+                                        <br> -->
+                                        <!-- <label class="label">Source :</label>{{row.source}} <br>
+                                        <label class="label">Bench Age :</label>{{row.benchAge}} <br>
+                                        <label class="label">Technology :</label>{{row.technology}} <br>
+                                        <label class="label">Pay Type:</label>{{row.payType.name}}<br>
+                                        <label class="label">Additional Notifiers:</label>{{row.additionalNotifiers}}<br>
+                                        <label class="label">Layer One:</label>{{row.layerOne}} <br>
+                                        <label class="label">Layer Two:</label>{{row.layerTwo}} --> <br>
+                                    </div>
+                                    <!-- <div>
+                                        <label class="label">Location :</label>{{row.location.name}} <br>
+                                        <label class="label">Total Experience:</label>{{row.totalExperience}} <br>
+                                        <label class="label">Job Title :</label>{{row.jobTitle.name}} <br>
+                                        <label class="label">Location :</label>{{row.location}} <br>
+                                        <label class="label">Job Title :</label>{{row.jobTitle}} <br>
+
+                                        <label class="label">Type Of Role:</label>{{row.typeOfRole}} <br>
+                                        <label class="label">Specific Skills :</label>{{row.specificSkills}} <br>
+                                        <label class="label">General Skills :</label>{{row.generalSkills}} <br>
+                                        <label class="label">Primary Skills :</label>{{row.primarySkills}} <br>
+                                        <label class="label">Mode :</label>{{row.mode.name}} <br>
+                                        <label class="label">Mode :</label>{{row.mode}} <br> 
+                                        <label class="label">Employer:</label>{{row.employer}}<br>
+                                        <label class="label">Employer:</label>{{row.employer.name}} <br>
+                                        <label class="label">Work Experience:</label>{{row.workExperience}} <br>
+                                        <label class="label">Date of Birth:</label>{{row.employee.dob}} <br>
+                                        <label class="label">AddedOn Date :</label>{{row.addedOn}} <br>
+                                        <label class="label">Remarks:</label>{{row.remarks}}<br>
+                                        <label class="label">SRS Joining Date:</label>{{row.srsJoiningDate}} <br>
+                                        <label class="label">Current Project Start Date :</label>{{row.currentProjectStartDate}} <br>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" [routerLink]="['/professional', row.id, 'edit']" (click)="close()"
+                                        class="mat-raised-button">Edit
+                                </button>
+                                <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button"
+                                        [routerLink]="['/professional-history', row.id]" (click)="close()"
+                                        class="mat-raised-button">View History
+                                </button>
+                                <button class="mat-raised-button" (click)="close()">Close</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageIndex]=0 [pageSize]=10 (page)="getNext($event)"
+                           showFirstLastButtons></mat-paginator>
+            <div class="reportButton" *ngIf="searchResult">
+                <button class="btn btn-success" (click)=exportExcel(excelColums)>Download</button>
+                <button class="btn btn-success" (click)=exportMail(excelMailColums)>Send Mail</button>
+            </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="errorMsg">
+            <h5>No Results found</h5>
+        </div>
+
+
+        <ng-template #excelColums let-modal>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Download Results As Excel</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 style="text-align:center">Please Select Which columns to export in Excel</h5>
+                    <hr>
+                    </hr>
+                    <button class="mat-raised-button selectALL" (click)="selectAllOrNot(true)">Select All</button>
+                    <button class="mat-raised-button disSelectALL" (click)="selectAllOrNot(false)">UnSelect All</button>
+
+                    <div id="excel" class="excel">
+                        <div>
+                            <input type="checkbox" id="id" name="id" value="id" [(ngModel)]="column.id"
+                                   ng-checked="true"> Employee Id<br>
+                            <input type="checkbox" id="empType" name="empType" value="empType"
+                                   [(ngModel)]="column.empType"
+                                   checked="true"> Employee Type<br>
+                            <!-- <input type="checkbox" name="fullName" value="fullName" [(ngModel)]="column.fullName"
+                                   checked="true"> Full
+                            Name<br>
+                            <input type="checkbox" name="email" value="email" [(ngModel)]="column.email" checked="true">
+                            Email<br>
+                            <input type="checkbox" name="homePhone" value="homePhone" [(ngModel)]="column.homePhone"
+                                   checked="true"> Home Phone <br> -->
+                            <input type="checkbox" name="mobileNumber" value="mobileNumber"
+                                   [(ngModel)]="column.mobileNumber" checked="true">
+                            Model Number <br>
+                           <!--  <input type="checkbox" name="workPhoneNumber" value="workPhoneNumber"
+                                   [(ngModel)]="column.workPhoneNumber" checked="true">
+                            Work Phone Number <br>
+                            <input type="checkbox" name="status" value="status" [(ngModel)]="column.status"
+                                   checked="true"> Status<br>
+                            <input type="checkbox" name="location" value="location" [(ngModel)]="column.location"
+                                   checked="true"> Location<br>
+                            <input type="checkbox" name="totalExperience" value="totalExperience"
+                                   [(ngModel)]="column.totalExperience" checked="true">
+                            Total Experience<br>
+                            <input type="checkbox" name="dob" value="dob" [(ngModel)]="column.dob" checked="true">Date
+                            of Birth<br>
+                            <input type="checkbox" name="addedOn" value="addedOn"
+                                   [(ngModel)]="column.addedOn" checked="true">AddedOn Date<br>
+                            <input type="checkbox" name="addtionalNotifiers" value="addtionalNotifiers"
+                                   [(ngModel)]="column.addtionalNotifiers" checked="true"> Additional Notifiers<br>
+                            <input type="checkbox" name="srsJoiningDate" value="srsJoiningDate" [(ngModel)]="column.srsJoiningDate"
+                                    checked="true"> SRS Joining Date<br> -->
+                            <input type="checkbox" name="currentProjectStartDate" value="currentProjectStartDate" [(ngModel)]="column.currentProjectStartDate"
+                                    checked="true">Procurement Date<br>
+                        </div>
+                       <!--  <div>
+                            <input type="checkbox" name="jobTitle" value="jobTitle" [(ngModel)]="column.jobTitle"
+                                   checked="true">Job Title<br>
+                            <input type="checkbox" name="source" value="source" [(ngModel)]="column.source"
+                                   checked="true">Source<br>
+                            <input type="checkbox" name="typeOfRole" value="typeOfRole" [(ngModel)]="column.typeOfRole"
+                                   checked="true">Type Of Role<br>
+                            <input type="checkbox" name="specificSkills" value="specificSkills"
+                                   [(ngModel)]="column.specificSkills"
+                                   checked="true"> Specific Skills<br>
+                            <input type="checkbox" name="generalSkills" value="generalSkills"
+                                   [(ngModel)]="column.generalSkills"
+                                   checked="checked"> General Skills<br>
+                            <input type="checkbox" name="primarySkills" value="primarySkills"
+                                   [(ngModel)]="column.primarySkills"
+                                   checked="checked"> Primary Skills<br>
+                            <input type="checkbox" name="benchAge" value="benchAge" [(ngModel)]="column.benchAge"
+                                   checked="true"> Bench Age<br>
+                            <input type="checkbox" name="technology" value="technology" [(ngModel)]="column.technology"
+                                   checked="true">Technology<br>
+                            <input type="checkbox" name="mode" value="mode" [(ngModel)]="column.mode" checked="true">
+                            Mode<br>
+                            <input type="checkbox" name="employer" value="employer" [(ngModel)]="column.employer"
+                                   checked="true"> Employer<br> -->
+                            <!-- <input type="checkbox" name="payType" value="payType" [(ngModel)]="column.payType"
+                                   checked="true">
+                            Pay Type<br> -->
+                            <input type="checkbox" name="workExperience" value="workExperience"
+                                   [(ngModel)]="column.workExperience"> Work Experience<br>
+                            <input type="checkbox" name="remarks" value="remarks" [(ngModel)]="column.remarks">
+                            Remarks<br>
+                            <input type="checkbox" name="layerOne" value="layerOne" [(ngModel)]="column.layerOne"
+                                   checked="true">Layer One<br>
+                            <input type="checkbox" name="layerTwo" value="layerTwo" [(ngModel)]="column.layerTwo" checked="true">
+                            Layer Two<br>      
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="downloadExcel()" class="mat-raised-button">Download</button>
+                    <button class="mat-raised-button" (click)="close()">Close</button>
+                </div>
+            </div>
+        </ng-template>
+
+
+        <ng-template #excelMailColums let-modal>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Download Results As Excel</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 style="text-align:center">Please Select Which columns to export in Excel</h5>
+                    <hr>
+                    </hr>
+                    <button class="mat-raised-button selectALL" (click)="selectAllOrNot(true)">Select All</button>
+                    <button class="mat-raised-button disSelectALL" (click)="selectAllOrNot(false)">UnSelect All</button>
+                    <div id="excel" class="excel">
+                        <div>
+                            <input type="checkbox" id="id" name="id" value="id" [(ngModel)]="column.id"
+                                   ng-checked="true"> Employee Id<br>
+                            <input type="checkbox" id="empType" name="empType" value="empType"
+                                   [(ngModel)]="column.empType"
+                                   checked="true"> Asset Type<br>
+                            <!-- <input type="checkbox" name="fullName" value="fullName" [(ngModel)]="column.fullName"
+                                   checked="true"> Full
+                            Name<br>
+                            <input type="checkbox" name="email" value="email" [(ngModel)]="column.email" checked="true">
+                            Email<br>
+                            <input type="checkbox" name="homePhone" value="homePhone" [(ngModel)]="column.homePhone"
+                                   checked="true"> Home Phone <br>
+                            <input type="checkbox" name="mobileNumber" value="mobileNumber"
+                                   [(ngModel)]="column.mobileNumber" checked="true"> -->
+                            Model Number <br>
+                           <!--  <input type="checkbox" name="workPhoneNumber" value="workPhoneNumber"
+                                   [(ngModel)]="column.workPhoneNumber" checked="true">
+                            Work Phone Number <br>
+                            <input type="checkbox" name="status" value="status" [(ngModel)]="column.status"
+                                   checked="true"> Status<br>
+                            <input type="checkbox" name="location" value="location" [(ngModel)]="column.location"
+                                   checked="true"> Location<br>
+                            <input type="checkbox" name="totalExperience" value="totalExperience"
+                                   [(ngModel)]="column.totalExperience" checked="true">
+                            Total Experience<br>
+                            <input type="checkbox" name="dob" value="dob" [(ngModel)]="column.dob" checked="true">Date
+                            of Birth<br>
+                            <input type="checkbox" name="addedOn" value="addedOn"
+                                   [(ngModel)]="column.addedOn" checked="true">AddedOn Date<br>
+                            <input type="checkbox" name="addtionalNotifiers" value="addtionalNotifiers"
+                                   [(ngModel)]="column.addtionalNotifiers" checked="true"> Additional Notifiers<br>
+                            <input type="checkbox" name="srsJoiningDate" value="srsJoiningDate" [(ngModel)]="column.srsJoiningDate"
+                                    checked="true"> SRS Joining Date<br> -->
+                            <input type="checkbox" name="currentProjectStartDate" value="currentProjectStartDate" [(ngModel)]="column.currentProjectStartDate"
+                                    checked="true">Procurement Date<br>  
+                        </div>
+                        <!-- <div>
+                            <input type="checkbox" name="jobTitle" value="jobTitle" [(ngModel)]="column.jobTitle"
+                                   checked="true">Job Title<br>
+                            <input type="checkbox" name="source" value="source" [(ngModel)]="column.source"
+                                   checked="true">Source<br>
+                            <input type="checkbox" name="typeOfRole" value="typeOfRole" [(ngModel)]="column.typeOfRole"
+                                   checked="true">Type Of Role<br>
+                            <input type="checkbox" name="specificSkills" value="specificSkills"
+                                   [(ngModel)]="column.specificSkills"
+                                   checked="true"> Specific Skills<br>
+                            <input type="checkbox" name="generalSkills" value="generalSkills"
+                                   [(ngModel)]="column.generalSkills"
+                                   checked="checked"> General Skills<br>
+                            <input type="checkbox" name="primarySkills" value="primarySkills"
+                                   [(ngModel)]="column.primarySkills"
+                                   checked="checked"> Primary Skills<br>
+                            <input type="checkbox" name="benchAge" value="benchAge" [(ngModel)]="column.benchAge"
+                                   checked="true"> Bench Age<br>
+                            <input type="checkbox" name="technology" value="technology" [(ngModel)]="column.technology"
+                                   checked="true">Technology<br>
+                            <input type="checkbox" name="mode" value="mode" [(ngModel)]="column.mode" checked="true">
+                            Mode<br>
+                            <input type="checkbox" name="employer" value="employer" [(ngModel)]="column.employer"
+                                   checked="true"> Employer<br>
+                            <input type="checkbox" name="payType" value="payType" [(ngModel)]="column.payType"
+                                   checked="true">
+                            Pay Type<br>
+                            <input type="checkbox" name="workExperience" value="workExperience"
+                                   [(ngModel)]="column.workExperience"> Work Experience<br>
+                            <input type="checkbox" name="remarks" value="remarks" [(ngModel)]="column.remarks">
+                            Remarks<br>
+                            <input type="checkbox" name="layerOne" value="layerOne" [(ngModel)]="column.layerOne"
+                                   checked="true">Layer One<br>
+                            <input type="checkbox" name="layerTwo" value="layerTwo" [(ngModel)]="column.layerTwo" checked="true">
+                            Layer Two<br>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="exportExcelMail()" class="mat-raised-button">Send Mail</button>
+                    <button class="mat-raised-button" (click)="close()">Close</button>
+                </div>
+            </div>
+        </ng-template>
+    </div>

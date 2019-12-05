@@ -1,0 +1,55 @@
+.profHistory {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  // position: relative;
+}
+
+.heading h2 {
+  padding-top: 10px;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: serif;
+  font-variant-caps: small-caps;
+  position: fixed;
+}
+
+table {
+  // table-layout: fixed;
+  word-wrap: break-word;
+}
+
+td {
+  font-family: serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px !important;
+  height: 1.2em;
+  white-space: nowrap;
+}
+
+.profTable {
+  margin-top: 33px;
+}
+
+.errMessage {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  font-family: serif;
+}
+
+tbody{
+  background: snow;
+}
+
+thead{
+  background: #d5dde8;
+}

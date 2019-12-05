@@ -1,0 +1,94 @@
+<div class="header heading chartbox">
+    <h2>Manage {{selectionElement}} List</h2>
+</div>
+      <div class="row">
+        <div class="col-md-2 col-xs-12 sidenav">
+                <a class="element" [ngClass]="{'active': selectionElement === 'location' }" (click)="selection('location')">Location</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'mode' }" (click)="selection('mode')">Mode</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'payType' }" (click)="selection('payType')">Pay Type</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'employer' }" (click)="selection('employer')">Employer</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'clientDomain' }" (click)="selection('clientDomain')">Client Domain</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'endDomain' }" (click)="selection('endDomain')">End Domain</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'empType' }" (click)="selection('empType')">Employement Type</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'status' }" (click)="selection('status')">Status</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'endClient' }" (click)="selection('endClient')">End Client</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'workAuthorization' }" (click)="selection('workAuthorization')">Work Authorization</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'primeVendor' }" (click)="selection('primeVendor')">Prime Vendor</a>
+                <a class="element" [ngClass]="{'active': selectionElement === 'jobTitle' }" (click)="selection('jobTitle')">Job Title</a>
+        </div>
+        <div class="col-md-10 col-xs-12 tableBox">
+            <div class="mainBox table-responsive" >
+                <button class="btn btn-primary float-right jh-create-entity" data-toggle="modal" data-target="#addEmployeeModal">
+                    <fa-icon [icon]="'plus'"></fa-icon> <span>Add New {{selectionElement}}</span>
+                </button>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let master of masters">
+                            <td>{{master.id}}</td>
+                            <td>{{master.name}}</td>
+                            <td>{{master.status}}</td>
+                            <td>
+                                <a href="#editEmployeeModal" class="edit" data-toggle="modal" (click)="selectedId(master)">
+                                    <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<!-- Add Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add {{selectionElement}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input id="inputData" name="inputData" [(ngModel)]="inputData" type="text" class="form-control" placeholder="Enter {{selectionElement}} Name" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" (click)="saveData()" class="btn btn-success"  data-dismiss="modal" value="Add">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+     <!-- Edit Modal HTML -->
+     <div id="editEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit {{selectionElement}}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="elementName" placeholder="Enter {{selectionElement}} Name" [(ngModel)]="elementName" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-info"  (click)="updateData(elementName)" value="Update" data-dismiss="modal">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
