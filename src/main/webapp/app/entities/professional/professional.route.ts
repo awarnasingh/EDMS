@@ -10,6 +10,7 @@ import {ProfessionalComponent} from './professional.component';
 import {ProfessionalDetailComponent} from './professional-detail.component';
 import {ProfessionalUpdateComponent} from './professional-update.component';
 import {ProfessionalDeletePopupComponent} from './professional-delete-dialog.component';
+
 import {
     BLANK,
     DELETE_BY_ID_URL,
@@ -83,7 +84,7 @@ export const professionalRoute: Routes = [
             pageTitle: PROFESSIONALS
         },
         canActivate: [UserRouteAccessService]
-    }
+    },
 ];
 
 export const professionalPopupRoute: Routes = [

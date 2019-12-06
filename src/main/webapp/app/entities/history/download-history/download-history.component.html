@@ -6,14 +6,18 @@
     <h2>Reports</h2>
     
   </div>
+
   <div class="row">
-    <div class="col-md-2 col-xs-12 sidebar" *ngIf= 'users'>
-      <div class="filter">
-        <input class="form-control"  [(ngModel)]="userName" type="text" name="search"  autocomplete="off" placeholder="Search for Login Name">
-      </div>
+
+  <div class="filter">
+      <input class="form-control"  [(ngModel)]="userName" type="text" name="search"  autocomplete="off" placeholder="Search for Login Name">
+    </div>
+  
+    <!-- <div class="col-md-2 col-xs-12 sidebar" *ngIf= 'users'> -->
+<!--      
       <div class="name" *ngFor="let user of users | filter : userName ">  
         <p (click)="downloadHistroy(user.login)" >{{user.login}}</p>
-      </div>
+      </div> -->
     </div>
     <div class="col-md-10 col-xs-12 tableBox">
         <div class="mainBox table-responsive"  *ngIf = 'showResult; else errorMessage' >
@@ -55,13 +59,13 @@
               </table>
         </div>
 
-        <mat-paginator #paginator [pageIndex]=0 [pageSize]=2 (page)="getNext($event)"
-                           showFirstLastButtons></mat-paginator>        
-        <ng-template #errorMessage>
+        <!-- <mat-paginator #paginator [pageIndex]=0 [pageSize]=2 (page)="getNext($event)"
+                           showFirstLastButtons></mat-paginator>         -->
+        <!-- <ng-template #errorMessage>
           <div class="errorMessage">
               No Data Found
           </div>
-        </ng-template>
+        </ng-template> -->
     </div> 
   </div>
 

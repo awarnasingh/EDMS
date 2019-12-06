@@ -23,13 +23,13 @@ const ENTITY_STATES = [...professionalRoute, ...professionalPopupRoute];
     ProfessionalDetailComponent,
     ProfessionalUpdateComponent,
     ProfessionalDeleteDialogComponent,
-    ProfessionalDeletePopupComponent
-  ],
+    ProfessionalDeletePopupComponent,
+    ],
   entryComponents: [
     ProfessionalComponent,
     ProfessionalUpdateComponent,
     ProfessionalDeleteDialogComponent,
-    ProfessionalDeletePopupComponent
+    ProfessionalDeletePopupComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

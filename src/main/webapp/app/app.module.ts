@@ -25,6 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material';
 import {SearchCriteriaComponent} from './search/search-criteria/search-criteria.component';
 import {MatDialogModule, MatFormFieldModule, MatSortModule} from '@angular/material';
+// import { ClientComponent } from './client/client.component';
 
 export const ALERT_TIME_OUT = 5000;
 export const ALERT_TOAST = false;
